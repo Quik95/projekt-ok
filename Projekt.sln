@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedyHeuristic", "GreedyHeuristic\GreedyHeuristic.csproj", "{8FA46035-131A-4C85-A30D-3075BF7E774D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstanceGenerator", "InstanceGenerator\InstanceGenerator.csproj", "{DA948FF7-7FDA-446E-AA36-1CFA74B67619}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FA46035-131A-4C85-A30D-3075BF7E774D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA46035-131A-4C85-A30D-3075BF7E774D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA46035-131A-4C85-A30D-3075BF7E774D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA46035-131A-4C85-A30D-3075BF7E774D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA948FF7-7FDA-446E-AA36-1CFA74B67619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA948FF7-7FDA-446E-AA36-1CFA74B67619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA948FF7-7FDA-446E-AA36-1CFA74B67619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA948FF7-7FDA-446E-AA36-1CFA74B67619}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
