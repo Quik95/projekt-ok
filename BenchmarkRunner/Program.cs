@@ -2,13 +2,18 @@
 
 using OK.TaskSchedulingInstance;
 
-foreach (var instance in new[]
-         {
-             new TaskSchedulingInstance("instance_20.txt"),
-             new TaskSchedulingInstance("instance_100.txt"),
-             new TaskSchedulingInstance("grupa1_20.txt"),
-             new TaskSchedulingInstance("grupa1_100.txt"),
-             new TaskSchedulingInstance("grupa2_20.txt"),
-             new TaskSchedulingInstance("grupa2_100.txt")
-         })
-    instance.DisplayResults();
+var instances = Directory.GetFiles("./data", "*.txt").Select(path => new TaskSchedulingInstance(path)).ToArray();
+//
+// var instances = new[]
+// {
+//     new TaskSchedulingInstance("data/instance_20.txt"),
+//     new TaskSchedulingInstance("data/instance_100.txt"),
+//     new TaskSchedulingInstance("data/grupa1_20.txt"),
+//     new TaskSchedulingInstance("data/grupa1_100.txt"),
+//     new TaskSchedulingInstance("data/grupa2_20.txt"),
+//     new TaskSchedulingInstance("data/grupa2_100.txt"),
+//     new TaskSchedulingInstance("data/m50.txt"),
+//     new TaskSchedulingInstance("data/ekursy_pcmax.txt"),
+// };
+
+foreach (var instance in instances) instance.DisplayResults();

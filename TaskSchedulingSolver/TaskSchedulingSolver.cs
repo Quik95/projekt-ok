@@ -10,14 +10,14 @@ public abstract class TaskSchedulingSolver
     {
         Instance = (Task[]) instance.Clone();
         ParallelProcessors = Enumerable.Range(0, numberOfProcessors)
-            .Select(id => new Processor(id.ToString(), new List<Task>())).ToArray();
+            .Select(id => new Processor(id, new List<Task>())).ToArray();
     }
 
     public abstract IEnumerable<Processor> GetSolvedInstance();
     public abstract int GetLongest();
 }
 
-public record struct Processor(string ID, List<Task> Tasks)
+public record struct Processor(int ID, List<Task> Tasks)
 {
     public int TotalTime()
     {

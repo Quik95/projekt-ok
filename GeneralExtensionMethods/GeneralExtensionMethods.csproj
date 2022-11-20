@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GeneralExtensionMethods\GeneralExtensionMethods.csproj"/>
         <ProjectReference Include="..\TaskSchedulingSolver\TaskSchedulingSolver.csproj"/>
     </ItemGroup>
 
