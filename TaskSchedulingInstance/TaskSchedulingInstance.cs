@@ -1,4 +1,5 @@
-﻿using Task = OK.TaskSchedulingSolver.Task;
+﻿using OK.TaskSchedulingSolver;
+using Task = OK.TaskSchedulingSolver.Task;
 
 namespace OK.TaskSchedulingInstance;
 
@@ -33,20 +34,41 @@ public class TaskSchedulingInstance
         var heuristic = gh.GetLongest();
         var genetic = ga.GetLongest();
         var heuristicGenetic = gha.GetLongest();
+        var theoreticalBest = Instance.Select(t => t.Duration).Sum() / DegreeOfParallelism;
 
         Console.WriteLine($"Instancja: {FilePath}");
-        Console.WriteLine($"\tNajdłuższy czas wykonywania algorytmu heurystycznego: {heuristic}");
-        Console.WriteLine($"\tNajdłuższy czas wykonywania algorytmu genetycznego: {genetic}");
+        Console.WriteLine($"\tTeoretyczny best: {theoreticalBest}");
         Console.WriteLine(
-            $"\tNajdłuższy czas wykonywania algorytmu genetycznego zaczynając od wyniku heurystycznego: {heuristicGenetic}");
-        Console.WriteLine();
+            $"\tNajdłuższy czas wykonywania algorytmu zachłannego: {heuristic} ({(double) heuristic / theoreticalBest * 100:F2})");
+        Console.WriteLine(
+            $"\tNajdłuższy czas wykonywania algorytmu genetycznego: {genetic} ({(double) genetic / theoreticalBest * 100:F2})");
+        Console.WriteLine(
+            $"\tNajdłuższy czas wykonywania algorytmu genetycznego zaczynając od wyniku zachłannego: {heuristicGenetic} ({(double) heuristicGenetic / theoreticalBest * 100:F2})");
+
+        var col = Console.ForegroundColor;
+        if (heuristic < genetic && heuristic < heuristicGenetic)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\tWynik negatywny!!!");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\tWynik pozytywny");
+        }
+
+        Console.ForegroundColor = col;
     }
 
     public void DisplayGeneticStatistics()
     {
         var gh = new GeneticAlgorithm.GeneticAlgorithm(DegreeOfParallelism, Instance);
-        DisplayResults();
         var s = gh.GetSolvedInstance();
-        foreach (var processor in s) Console.WriteLine(processor);
+        var processors = s as Processor[] ?? s.ToArray();
+        foreach (var processor in processors) Console.WriteLine(processor);
+        var mostTasks = processors.Select(p => p.Tasks.Count).Max();
+        for (var i = 0; i <= mostTasks; i++)
+            Console.WriteLine($"Number of processors with {i} tasks: {processors.Count(p => p.Tasks.Count == i)}");
+        Console.WriteLine($"Time: {gh.GetLongest()}");
     }
 }
