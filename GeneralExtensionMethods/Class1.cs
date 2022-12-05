@@ -29,18 +29,17 @@ public static class ExtensionMethods
         }
     }
 
-    public static (byte[], byte[]) Choices(this Random rng, IEnumerable<byte[]> choices, List<double> cumWeights)
+    public static byte[] Choices(this Random rng, IReadOnlyList<byte[]> choices, Task[] instance)
     {
-        var bytesEnumerable = choices as byte[][] ?? choices.ToArray();
-        var total = cumWeights.Last();
-        var idx = cumWeights.BinarySearch(rng.NextDouble() * total);
-        int idx2;
-        do
+        byte[]? best = null;
+        for (var i = 0; i < 4; i++)
         {
-            idx2 = cumWeights.BinarySearch(rng.NextDouble() * total);
-        } while (idx == idx2);
+            var prentendent = choices[rng.Next(choices.Count)];
+            if (best is null || prentendent.FinishTime(instance) < best.FinishTime(instance))
+                best = prentendent;
+        }
 
-        return (bytesEnumerable[idx >= 0 ? idx : ~idx], bytesEnumerable[idx2 >= 0 ? idx2 : ~idx2]);
+        return best!;
     }
 
     public static (byte[], byte[]) Crossover(this Random rng, byte[] genomeLeft, byte[] genomeRight)

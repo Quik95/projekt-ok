@@ -49,7 +49,8 @@ public sealed class GeneticAlgorithm : TaskSchedulingSolver.TaskSchedulingSolver
             var cumWeights = weights.Accumulate().Select(p => (double) p).ToList();
             foreach (var j in Enumerable.Range(1, (int) (_population.Count * SurvivalRate)))
             {
-                var (parentA, parentB) = Rng.Choices(_population, cumWeights);
+                var parentA = Rng.Choices(_population, Instance);
+                var parentB = Rng.Choices(_population, Instance);
                 var (offspringA, offspringB) = Rng.Crossover(parentA, parentB);
                 Rng.Mutate(offspringA, ParallelProcessors.Length);
                 Rng.Mutate(offspringB, ParallelProcessors.Length);
@@ -57,7 +58,7 @@ public sealed class GeneticAlgorithm : TaskSchedulingSolver.TaskSchedulingSolver
                 nextGen.Add(offspringB);
             }
 
-            _population = nextGen;
+            _population = _population.Take(3).Concat(nextGen).ToList();
 
             _population = _population.SortPopulation(Instance);
             _population = _population.Take(PopulationLimit).ToList();
