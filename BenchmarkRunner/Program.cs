@@ -17,3 +17,4 @@ var instances = Directory.GetFiles("./data", "*.txt").Select(path => new TaskSch
 // };
 
 foreach (var instance in instances) instance.DisplayResults();
+// new TaskSchedulingInstance("data/m50.txt").DisplayGeneticStatistics();

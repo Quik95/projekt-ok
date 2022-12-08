@@ -12,8 +12,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulingSolver", "Tas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithm", "GeneticAlgorithm\GeneticAlgorithm.csproj", "{C599F56C-49B9-429C-A02A-A71765E2561A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralExtensionMethods", "GeneralExtensionMethods\GeneralExtensionMethods.csproj", "{7D73DA92-A903-46FF-A93D-911452EBA314}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +42,5 @@ Global
 		{C599F56C-49B9-429C-A02A-A71765E2561A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C599F56C-49B9-429C-A02A-A71765E2561A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C599F56C-49B9-429C-A02A-A71765E2561A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D73DA92-A903-46FF-A93D-911452EBA314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D73DA92-A903-46FF-A93D-911452EBA314}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D73DA92-A903-46FF-A93D-911452EBA314}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D73DA92-A903-46FF-A93D-911452EBA314}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

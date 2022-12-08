@@ -58,6 +58,7 @@ public class TaskSchedulingInstance
         }
 
         Console.ForegroundColor = col;
+        Console.WriteLine();
     }
 
     public void DisplayGeneticStatistics()
